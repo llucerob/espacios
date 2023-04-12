@@ -1,17 +1,40 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.master')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+@section('title', 'Default')
+
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/prism.css') }}">
+@endsection
+
+@section('style')
+@endsection
+
+@section('breadcrumb-title')
+    <h3>Solicitudes por entregar</h3>
+@endsection
+
+@section('breadcrumb-items')
+    <li class="breadcrumb-item active">Escritorio</li>
+   
+@endsection
+
+@section('content')
+<div class="container-fluid">
+    <div class="row starter-main">
+       
+        
+        
+        
+        
     </div>
-</x-app-layout>
+</div>
+
+<script type="text/javascript">
+    var session_layout = '{{ session()->get('layout') }}';
+</script>
+   
+@endsection
+
+@section('script')
+@endsection

@@ -26,81 +26,20 @@
                   </div>
                 </li>
 
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
-                <svg class="stroke-icon">
-                  <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
-                </svg>
-                <svg class="fill-icon">
-                  <use href="{{ asset('assets/svg/icon-sprite.svg#fill-user') }}"></use>
-                </svg><span>Beneficiarios</span></a>
-                <ul class="sidebar-submenu" style="display: block;">
-                <li><a href="{{url('beneficiarios/listar')}}">Listar Beneficiario</a>
-                </li>
-                <li><a href="{{url('beneficiarios/nuevo')}}">Nuevo Beneficiario</a>
-                </li></ul>
-              </li>
-            
-              
             <li class="pin-title sidebar-main-title">
                   <div> 
-                    <h6>Reembolsos</h6>
+                    <h6>Utilidades</h6>
                   </div>
                 </li>
 
             
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{route('listar.devoluciones')}}">
-                  <svg class="stroke-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-charts') }}"></use>
-                  </svg>
-                  <svg class="fill-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-charts') }}"></use>
-                  </svg><span>Boletas</span></a></li>
-
-
-            <li class="pin-title sidebar-main-title">
-                  <div> 
-                    <h6>Bodega</h6>
-                  </div>
-                </li>
-
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
-                <svg class="stroke-icon">
-                  <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-bonus-kit') }}"></use>
-                </svg>
-                <svg class="fill-icon">
-                  <use href="{{ asset('assets/svg/icon-sprite.svg#fill-bonus-kit') }}"></use>
-                </svg><span>Materiales</span></a>
-              <ul class="sidebar-submenu">
-                <li><a href="{{route('materiales.index')}}">Listar Material</a></li>
-                <li><a href="{{route('materiales.create')}}">Nuevo Material</a></li>
-              </ul>
-              </li>
-
-              <li class="pin-title sidebar-main-title">
-                <div> 
-                  <h6>Utilidades</h6>
-                </div>
-              </li>
-
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
+            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
                   <svg class="stroke-icon">
                     <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-to-do') }}"></use>
                   </svg>
                   <svg class="fill-icon">
                     <use href="{{ asset('assets/svg/icon-sprite.svg#fill-to-do') }}"></use>
-                  </svg><span>Más</span></a>
-                  <ul class="sidebar-submenu">
-                    <li><a href="{{route('medidas')}}">Medidas</a></li>
-                    <li><a href="{{route('categorias')}}">Categorias</a></li>
-                    <li><a href="{{route('sectores')}}">Sectores</a></li>
-                  </ul>
-              </li>
-
-            
-            
-             
-
-
+                  </svg><span>Categorías</span></a></li>
 
 
           </ul>

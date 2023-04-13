@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtilsController;
+use App\Http\Controllers\EspaciosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +30,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    //UTILS
+    //Utils
 
     Route::get('utils/categorias', [UtilsController::class, 'categorias'])->name('categorias');
     Route::post('utils/categorias/guardar', [UtilsController::class, 'storecategorias'])->name('categorias.store');
     Route::get('utils/categorias/destroy/{id}', [UtilsController::class, 'destroycategorias'])->name('destroy.categoria');
+   
     
+    
+    //Encargados
+
+    Route::get('utils/encargados', [UtilsController::class, 'encargados'])->name('encargados');
+    Route::post('utils/encargados/guardar', [UtilsController::class, 'storeencargado'])->name('encargado.store');
+    Route::get('utils/encargados/destroy/{id}', [UtilsController::class, 'destroyencargado'])->name('destroy.encargado');
+
+    //espacios
+
+    Route::get('espacios/crear', [EspaciosController::class, 'create'])->name('crear.espacio');
+     
 
 
 

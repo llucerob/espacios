@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Espacio extends Model
 {
     use HasFactory;
+
+    protected $table = "espacios";
 }

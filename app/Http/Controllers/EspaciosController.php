@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+use App\Models\Encargado;
+
 
 class EspaciosController extends Controller
 {
@@ -19,7 +22,10 @@ class EspaciosController extends Controller
      */
     public function create()
     {
-        //
+        $encargados     = Encargado::all();
+        $categorias     = Categoria::all();
+
+        return view('espacios.crear-espacios', ['encargados' => $encargados, 'categorias' => $categorias]);
     }
 
     /**

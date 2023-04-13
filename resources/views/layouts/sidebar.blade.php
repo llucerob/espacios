@@ -22,24 +22,35 @@
 
                 <li class="pin-title sidebar-main-title">
                   <div> 
-                    <h6>Social</h6>
+                    <h6>Espacios</h6>
                   </div>
                 </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{route('crear.espacio')}}">
+                  
+                 
+                  
+                  <span>Crear Nuevo Espacio</span></a></li>
 
-            <li class="pin-title sidebar-main-title">
-                  <div> 
-                    <h6>Utilidades</h6>
-                  </div>
+                  
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
+                   
+                    <span>Agendar</span></a></li>
+
+
+
+                <li class="pin-title sidebar-main-title">
+                      <div> 
+                        <h6>Utilidades</h6>
+                      </div>
                 </li>
-
-            
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
-                  <svg class="stroke-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-to-do') }}"></use>
-                  </svg>
-                  <svg class="fill-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-to-do') }}"></use>
-                  </svg><span>Categorías</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
+               
+                  <span> Categorías</span></a>
+                </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('encargados') }}">
+               
+                  <span> Encargados</span></a>
+                </li>
 
 
           </ul>

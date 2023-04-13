@@ -11,12 +11,12 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Listado Categorías</h3>
+    <h3>Listado Encargados</h3>
 @endsection
 
 @section('breadcrumb-items')
     <li class="breadcrumb-item">Utils</li>
-    <li class="breadcrumb-item active">Categorías</li>
+    <li class="breadcrumb-item active">Encargados</li>
    
 @endsection
 
@@ -28,7 +28,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5>Listado Categorías</h5>
+                    <h5>Encargados Registrados</h5>
                     
                 </div>
                 <div class="card-body">
@@ -39,18 +39,20 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Descripción</th>
+                                        <th>Teléfono</th>
+                                        <th>Correo</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categorias as $c )
+                                    @foreach ($encargados as $c )
                                         <tr>
-                                            <td width="20%">{{$c->nombre}}</td>
-                                            <td width="60%">{{$c->descripcion}}</td>
-                                            <td width="20%">
+                                            <td width="25%">{{$c->nombre}}</td>
+                                            <td width="25%">{{$c->telefono}}</td>
+                                            <td width="25%">{{$c->correo}}</td>
+                                            <td width="25%">
                                                 
-                                                <a href="{{ route('destroy.categoria', [$c->id]) }}" class="btn btn-outline-danger btn-sm"><i class="icon-trash"></i></a>
+                                                <a href="{{ route('destroy.encargado', [$c->id]) }}" class="btn btn-outline-danger btn-sm"><i class="icon-trash"></i></a>
                                                 
                                             </td>
                                         </tr>
@@ -68,30 +70,38 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5>Crear nueva categoria</h5>
+                    <h5>Crear nuevo encargado</h5>
                     
                 </div>
                 
-                <form class="needs-validation theme-form" novalidate="" action="{{ route('categorias.store') }}" method="post" enctype="multipart/form-data">
+                <form class="needs-validation theme-form" novalidate="" action="{{ route('encargado.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                       <div class="row g-3">
 
                         <div class="col-md-6">
                           <div class="mb-3">
-                            <label class="form-label" for="inputNombreCategoria">Nombre Categoria</label>
-                            <input class="form-control" id="inputNombreCategoria" type="text" required name="nombre" placeholder="Pañales">
+                            <label class="form-label" for="inputNombreCategoria">Nombre Encargado</label>
+                            <input class="form-control" id="inputNombreCategoria" type="text" required name="nombre" placeholder="Juan Perez">
                             <div class="valid-feedback">¡Luce bien!</div>
                           </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                              <label class="form-label" for="inputAbrvCategoria">Descripción</label>
-                              <input class="form-control" id="inputAbrvCategoria" type="text"  name="descripcion" placeholder="Pañales Adulto">
+                              <label class="form-label" for="inputAbrvCategoria">Teléfono</label>
+                              <input class="form-control" id="inputAbrvCategoria" type="text"  name="telefono">
                               <div class="valid-feedback">¡Luce bien!</div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                              <label class="form-label" for="inputAbrvCategoria">Correo</label>
+                              <input class="form-control" id="inputAbrvCategoria" type="text"  name="correo">
+                              <div class="valid-feedback">¡Luce bien!</div>
+                            </div>
+                        </div>
+                        
 
                       </div>
 

@@ -57,7 +57,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                               <label class="form-label" for="SelectCategoria">Categoría</label>
-                              <select name="categorias" id="SelectCategoria" class="form-control">
+                              <select name="categoria" id="SelectCategoria" class="form-control">
                                 @foreach ($categorias as $c )
                                         <option value="{{$c->id}}">{{$c->nombre}}</option>    
                                 @endforeach
@@ -88,6 +88,34 @@
                               
                               <div class="valid-feedback">¡Luce bien!</div>
                             </div>
+                        </div>
+
+
+                        <div class="mb-3 row ">
+                          <div class="col-md-4">
+                            <label class="col-sm-3 col-form-label text-end">Apertura</label>
+                          <div class="col-sm-6">
+                            <div class="input-group date" id="apertura" data-target-input="nearest">
+                              <input class="form-control datetimepicker-input digits" name="apertura" type="text" data-target="#apertura">
+                              <div class="input-group-text" data-target="#apertura" data-toggle="datetimepicker"><i class="fa fa-clock-o"></i></div>
+                              <div class="valid-feedback">¡Luce bien!</div>
+                            </div>
+                          </div>
+                          </div>
+                          
+
+                          <div class="col-md-4">
+                            <label class="col-sm-3 col-form-label text-end">Cierre</label>
+                          <div class="col-sm-6">
+                            <div class="input-group date" id="cierre" data-target-input="nearest">
+                              <input class="form-control datetimepicker-input digits" type="text" name="cierre" data-target="#cierre">
+                              <div class="input-group-text" data-target="#cierre" data-toggle="datetimepicker"><i class="fa fa-clock-o"></i></div>
+                              <div class="valid-feedback">¡Luce bien!</div>
+                            </div>
+                          </div>
+                          </div>
+
+                          
                         </div>
                         
 
@@ -124,6 +152,23 @@
             });
         });
     </script>
+    <script>
+       $(function () {
+        $('#apertura').datetimepicker({
+            format: 'LT'
+        });
+        });
+        $(function () {
+        $('#cierre').datetimepicker({
+            format: 'LT'
+        });
+        });
+    </script>
+
+
+    <script src="{{asset('assets/js/datepicker/date-time-picker/moment.min.js')}}"></script>
+    <script src="{{asset('assets/js/datepicker/date-time-picker/tempusdominus-bootstrap-4.min.js')}}"></script>
+    
     <!-- <script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script> -->
 
 @endsection

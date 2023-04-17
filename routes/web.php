@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('espacios/crear', [EspaciosController::class, 'create'])->name('crear.espacio');
     Route::post('espacios/store', [EspaciosController::class, 'store'])->name('espacio.store');
     Route::get('espacios/mostrar', [EspaciosController::class, 'index'])->name('espacios.mostrar');
+    Route::get('espacios/ver/{id}', [EspaciosController::class, 'show'])->name('espacios.ver');
 
     
 

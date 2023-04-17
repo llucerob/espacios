@@ -17,7 +17,10 @@ class EspaciosController extends Controller
     public function index()
     {
 
+           
         $espacios   = Espacio::all();
+
+
 
         return view('espacios.ver-espacios', ['espacios' => $espacios]);
     }
@@ -62,7 +65,9 @@ class EspaciosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        
+        return view('espacios.ver-programacion');
     }
 
     /**

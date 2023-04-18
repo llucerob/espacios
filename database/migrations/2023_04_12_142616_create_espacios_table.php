@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('encargado_id')->constrained('encargados')->onDelete('cascade');
             $table->string('horario_apertura')->nullable();
             $table->string('horario_cierre')->nullable();
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->timestamps();
         });

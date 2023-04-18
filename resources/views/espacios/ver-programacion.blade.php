@@ -9,11 +9,11 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Calender Basic</h3>
+    <h3>Reservas En {{$recinto->nombre}}</h3>
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item active">Calender</li>
+    <li class="breadcrumb-item active">Calendario</li>
 @endsection
 
 @section('content')
@@ -22,8 +22,29 @@
             <div class="card-body">
                 <div class="row" id="wrap">
                     <div class="col-xxl-3 box-col-12">
-                        <div class="md-sidebar mb-3"><a class="btn btn-primary md-sidebar-toggle"
-                                href="javascript:void(0)">calendar filter</a>
+                        <div class="md-sidebar mb-3">
+
+                            <form action="{{route('ver.agenda')}}" method="post">
+                                @csrf
+
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label class="form-label" for="SelectRecinto">Recinto</label>
+                                      <select name="recinto" id="SelectRecinto" class="form-control">
+                                        @foreach ($recintos as $e )
+                                                <option value="{{$e->id}}">{{$e->nombre}}</option>    
+                                        @endforeach
+                                        
+                                      </select>
+                                      
+                                      
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Revisar</button>
+                        
+        
+
+                            </form>
                             
                         </div>
                     </div>
@@ -40,12 +61,14 @@
 
 @section('script')
     <script src="{{ asset('assets/js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar/es.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
 /* initialize the calendar
 -----------------------------------------------------------------*/
-
+        var eventos = @json($eventos);
+        console.log(eventos)
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
         headerToolbar: {
@@ -54,55 +77,12 @@
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
         initialView: 'dayGridMonth',
-        
         navLinks: true, // can click day/week names to navigate views
-        
         selectable: true,
+        locale: 'es',
         nowIndicator: true,
         // dayMaxEvents: true, // allow "more" link when too many events
-        events: [
-            {
-            title: 'All Day Event',
-            start: '2022-11-01',
-            },
-            {
-            title: 'Tour with our Team.',
-            start: '2022-11-07',
-            end: '2022-11-10'
-            },
-            {
-            groupId: 999,
-            title: 'Meeting with Team',
-            start: '2022-11-11T16:00:00'
-            },
-            {
-            groupId: 999,
-            title: 'Upload New Project',
-            start: '2022-11-16T16:00:00'
-            },
-            {
-            title: 'Birthday Party',
-            start: '2022-11-24',
-            end: '2022-11-26'
-            },
-            {
-            title: 'Reporting about Theme',
-            start: '2022-11-28T10:30:00',
-            end: '2022-11-29T12:30:00'
-            },
-            {
-            title: 'Lunch',
-            start: '2022-11-30T12:00:00'
-            },
-            {
-            title: 'Meeting',
-            start: '2022-11-12T14:30:00'
-            },
-            {
-            title: 'Happy Hour',
-            start: '2022-11-30T17:30:00'
-            },
-        ],
+        events: eventos,
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function(arg) {

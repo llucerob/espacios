@@ -18,7 +18,7 @@
                 </svg>
                 <svg class="fill-icon">
                   <use href="{{ asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                </svg><span>Escritorio</span></a></li>
+                </svg><span>Todas las reservas</span></a></li>
 
                 <li class="pin-title sidebar-main-title">
                   <div> 
@@ -26,14 +26,24 @@
                   </div>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{route('crear.espacio')}}">
-                  
+                  <svg class="stroke-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-to-do') }}"></use>
+                  </svg>
+                  <svg class="fill-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-to-do') }}"></use>
+                  </svg>
                  
                   
-                  <span>Crear Nuevo Espacio</span></a></li>
+                  <span>Nuevo Espacio</span></a></li>
 
                   
-                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
-                   
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{route('espacio.agendar')}}">
+                    <svg class="stroke-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-calendar') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#fill-calendar') }}"></use>
+                    </svg>
                     <span>Agendar</span></a></li>
 
 
@@ -44,11 +54,21 @@
                       </div>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
-               
+                  <svg class="stroke-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-table') }}"></use>
+                  </svg>
+                  <svg class="fill-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-table') }}"></use>
+                  </svg>
                   <span> Categorías</span></a>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('encargados') }}">
-               
+                  <svg class="stroke-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
+                  </svg>
+                  <svg class="fill-icon">
+                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-user') }}"></use>
+                  </svg>
                   <span> Encargados</span></a>
                 </li>
 

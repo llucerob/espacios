@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('espacios.mostrar');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -44,12 +44,17 @@ Route::middleware('auth')->group(function () {
     Route::post('utils/encargados/guardar', [UtilsController::class, 'storeencargado'])->name('encargado.store');
     Route::get('utils/encargados/destroy/{id}', [UtilsController::class, 'destroyencargado'])->name('destroy.encargado');
 
-    //espacios
+    //Espacios
 
     Route::get('espacios/crear', [EspaciosController::class, 'create'])->name('crear.espacio');
     Route::post('espacios/store', [EspaciosController::class, 'store'])->name('espacio.store');
     Route::get('espacios/mostrar', [EspaciosController::class, 'index'])->name('espacios.mostrar');
-    Route::get('espacios/ver/{id}', [EspaciosController::class, 'show'])->name('espacios.ver');
+    Route::get('espacios/mostrar/{id}', [EspaciosController::class, 'show'])->name('ver.reserva');
+    Route::get('espacios/agendar', [EspaciosController::class, 'agendar'])->name('espacio.agendar');
+    Route::post('espacios/agendar/store', [EspaciosController::class, 'storereserva'])->name('reserva.store');
+    Route::post('espacios/ver/agenda', [EspaciosController::class, 'veragenda'])->name('ver.agenda');
+
+    
 
     
 

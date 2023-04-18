@@ -11,7 +11,7 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Crear Espacio</h3>
+    <h3>Todos los Recintos</h3>
 @endsection
 
 @section('breadcrumb-items')
@@ -38,7 +38,7 @@
               <br><b>Contacto encargado:</b> {{$e->encargado->telefono}}
               <br><b>Horario:</b> {{$e->horario_apertura}} - {{$e->horario_cierre}}</p>
               
-              <a href="" type="button" class="btn btn-primary m-2">Ver Programación</a>
+              <a href="{{ route('ver.reserva', [$e->id]) }}" type="button" class="btn btn-primary m-2">Ver Programación</a>
                 
             </div>
         </div>

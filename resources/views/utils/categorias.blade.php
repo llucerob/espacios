@@ -40,15 +40,17 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
+                                        <th>Encargado</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($categorias as $c )
                                         <tr>
-                                            <td width="20%">{{$c->nombre}}</td>
-                                            <td width="60%">{{$c->descripcion}}</td>
-                                            <td width="20%">
+                                            <td width="15%">{{$c->nombre}}</td>
+                                            <td width="55%">{{$c->descripcion}}</td>
+                                            <td width="15%">{{$c->encargado->nombre}}</td>
+                                            <td width="15%">
                                                 
                                                 <a href="{{ route('destroy.categoria', [$c->id]) }}" class="btn btn-outline-danger btn-sm"><i class="icon-trash"></i></a>
                                                 
@@ -89,6 +91,20 @@
                             <div class="mb-3">
                               <label class="form-label" for="inputAbrvCategoria">Descripción</label>
                               <input class="form-control" id="inputAbrvCategoria" type="text"  name="descripcion" placeholder="Pañales Adulto">
+                              <div class="valid-feedback">¡Luce bien!</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                              <label class="form-label" for="SelectEncargados">Encargado</label>
+                              <select name="encargado" id="SelectEncargados" class="form-control">
+                                @foreach ($encargados as $e )
+                                        <option value="{{$e->id}}">{{$e->nombre}}</option>    
+                                @endforeach
+                                
+                              </select>
+                             
                               <div class="valid-feedback">¡Luce bien!</div>
                             </div>
                         </div>

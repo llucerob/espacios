@@ -31,7 +31,7 @@
                     
                 </div>
                 
-                <form class="needs-validation theme-form" novalidate="" action="{{route('reserva.store')}}" method="post" enctype="multipart/form-data">
+                <form class="needs-validation theme-form" novalidate="" action="{{route('store.recurrente')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                       <div class="row g-3">

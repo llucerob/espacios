@@ -9,8 +9,7 @@ use App\Models\Espacio;
 use App\Models\Reserva;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
-
-
+use Psy\Command\WhereamiCommand;
 
 class EspaciosController extends Controller
 {
@@ -33,10 +32,10 @@ class EspaciosController extends Controller
      */
     public function create()
     {
-        $encargados     = Encargado::all();
+      
         $categorias     = Categoria::all();
 
-        return view('espacios.crear-espacios', ['encargados' => $encargados, 'categorias' => $categorias]);
+        return view('espacios.crear-espacios', ['categorias' => $categorias]);
     }
 
     /**
@@ -48,13 +47,14 @@ class EspaciosController extends Controller
         $new_espacio->nombre    =   $request->nombre;
         $new_espacio->direccion =   $request->direccion;
         $new_espacio->categoria_id =   $request->categoria;
-        $new_espacio->encargado_id =   $request->encargado;
+        
         
         if($request->file('imagen')){
             $ruta = Storage::disk('public')->put('imagen', $request->file('imagen'));
+            $new_espacio->imagen            =   $ruta;
         }
 
-        $new_espacio->imagen            =   $ruta;
+       
         $new_espacio->horario_apertura  =   $request->apertura;
         $new_espacio->horario_cierre    =   $request->cierre;
         $new_espacio->save();
@@ -124,26 +124,54 @@ class EspaciosController extends Controller
     }
 
     public function storereserva(Request $request){
-        $reserva    = new Reserva;
-
         
+        
+        
+        
+        
+        if($request->repeticion == 'on'){
+            $mesinicio      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('F');
+            $mesinicio2      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('F');
+            //dd($mesinicio);
+            $i= 0;
+
+            while ($mesinicio == $mesinicio2) {
+                $reserva    = new Reserva;
+                $reserva->responsable       = $request->nombre;
+                $reserva->telefono          = $request->telefono;
+                $reserva->correo            = $request->correo;
+                $reserva->motivo            = $request->motivo;
+                $reserva->inicio            = Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->addWeek($i)->format('Y-m-d H:i:s');
+                $reserva->fin               = Carbon::createFromFormat('d/m/Y H:i:s', $request->cierre)->addWeek($i)->format('Y-m-d H:i:s');
+                $reserva->espacio_id        = $request->espacio;
+                              
+                
+
+                $i = $i + 1;
+                $mesinicio2      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->addWeek($i)->format('F');
+                $reserva->save();
 
 
 
-        //dd(Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('Y-m-d H:i:s'));
+            }
+            
 
-        $reserva->responsable       = $request->nombre;
-        $reserva->telefono          = $request->telefono;
-        $reserva->correo            = $request->correo;
-        $reserva->motivo            = $request->motivo;
-        $reserva->inicio            = Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('Y-m-d H:i:s');
+        }else{
+            $reserva    = new Reserva;
+            $reserva->responsable       = $request->nombre;
+            $reserva->telefono          = $request->telefono;
+            $reserva->correo            = $request->correo;
+            $reserva->motivo            = $request->motivo;
+            $reserva->inicio            = Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('Y-m-d H:i:s');
+            $reserva->fin               = Carbon::createFromFormat('d/m/Y H:i:s', $request->cierre)->format('Y-m-d H:i:s');
+            $reserva->espacio_id        = $request->espacio;
+             
+            $reserva->save();
 
-        $reserva->fin               = Carbon::createFromFormat('d/m/Y H:i:s', $request->cierre)->format('Y-m-d H:i:s');
-        $reserva->espacio_id        = $request->espacio;
 
-
-        $reserva->save();
-
+        }
+        
+          
 
         return redirect()->route('dashboard');
  
@@ -154,5 +182,14 @@ class EspaciosController extends Controller
         $recinto    =   Espacio::findOrFail($request->recinto)->id;
 
         return redirect()->route('ver.reserva', [$recinto]);
+    }
+
+    public function agendarecurrente()
+    {
+        $espacios = Espacio::all();
+
+
+        return view('espacios.agendar-espacio-recurrente', ['espacios' => $espacios]);
+
     }
 }

@@ -12,15 +12,6 @@ class Espacio extends Model
 
     protected $table = "espacios";
 
-    /**
-     * Get the encargados that owns the Espacio
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function encargado(): BelongsTo
-    {
-        return $this->belongsTo(Encargado::class, 'encargado_id', 'id');
-    }
 
 
     /**

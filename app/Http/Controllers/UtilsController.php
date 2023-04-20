@@ -15,8 +15,9 @@ class UtilsController extends Controller
       public function categorias(){
 
         $categorias = Categoria::all();
+        $encargados = Encargado::all();
 
-        return view('utils.categorias', ['categorias' => $categorias]);
+        return view('utils.categorias', ['categorias' => $categorias, 'encargados' => $encargados]);
 
     }
 
@@ -24,8 +25,9 @@ class UtilsController extends Controller
     public function storecategorias(Request $request){
         $newcategoria = new Categoria;
 
-        $newcategoria->nombre          =   $request->nombre;
-        $newcategoria->descripcion     =   $request->descripcion;
+        $newcategoria->nombre           =   $request->nombre;
+        $newcategoria->descripcion      =   $request->descripcion;
+        $newcategoria->encargado_id     =   $request->encargado; 
         $newcategoria->save();
 
 

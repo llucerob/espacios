@@ -67,19 +67,7 @@
                               <div class="valid-feedback">¡Luce bien!</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                              <label class="form-label" for="SelectEncargado">Encargado</label>
-                              <select name="encargado" id="SelectEncargado" class="form-control">
-                                @foreach ($encargados as $e )
-                                        <option value="{{$e->id}}">{{$e->nombre}}</option>    
-                                @endforeach
-                                
-                              </select>
-                              
-                              <div class="valid-feedback">¡Luce bien!</div>
-                            </div>
-                        </div>
+                       
 
                         <div class="col-md-6">
                             <div class="mb-3">

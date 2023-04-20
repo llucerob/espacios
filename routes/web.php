@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('espacios/agendar', [EspaciosController::class, 'agendar'])->name('espacio.agendar');
     Route::post('espacios/agendar/store', [EspaciosController::class, 'storereserva'])->name('reserva.store');
     Route::post('espacios/ver/agenda', [EspaciosController::class, 'veragenda'])->name('ver.agenda');
+    Route::get('espacios/agendarecurrente', [EspaciosController::class, 'agendarecurrente'])->name('agenda.recurrente');
+    Route::post('espacios/agendarecurrente/store', [EspaciosController::class, 'storerecurrente'])->name('store.recurrente');
 
     
 

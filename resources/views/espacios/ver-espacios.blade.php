@@ -34,8 +34,9 @@
               
               <img class="m-2 img-fluid" src="{{url('storage/'.$e->imagen)}}" alt="">
               <p class="p-2"><b>Dirección:</b> {{$e->direccion}}
-              <br><b>Encargado:</b> {{$e->encargado->nombre}}
-              <br><b>Contacto encargado:</b> {{$e->encargado->telefono}}
+              <br><b>Encargado:</b> {{$e->categoria->encargado->nombre}}
+              <br><b>Teléfono encargado:</b> {{$e->categoria->encargado->telefono}}
+              <br><b>Correo Encargado:</b> {{$e->categoria->encargado->correo}}
               <br><b>Horario:</b> {{$e->horario_apertura}} - {{$e->horario_cierre}}</p>
               
               <a href="{{ route('ver.reserva', [$e->id]) }}" type="button" class="btn btn-primary m-2">Ver Programación</a>

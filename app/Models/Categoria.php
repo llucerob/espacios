@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Categoria extends Model
 {
@@ -20,4 +21,18 @@ class Categoria extends Model
     {
         return $this->hasOne(Espacio::class, 'categoria_id', 'id');
     }
+
+    /**
+     * Get the user that owns the Categoria
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function encargado(): BelongsTo
+    {
+        return $this->belongsTo(Encargado::class, 'encargado_id', 'id');
+    }
+
+
+
+
 }

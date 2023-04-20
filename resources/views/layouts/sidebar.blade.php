@@ -37,14 +37,19 @@
                   <span>Nuevo Espacio</span></a></li>
 
                   
-                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{route('espacio.agendar')}}">
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
                     <svg class="stroke-icon">
                       <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-calendar') }}"></use>
                     </svg>
                     <svg class="fill-icon">
                       <use href="{{ asset('assets/svg/icon-sprite.svg#fill-calendar') }}"></use>
                     </svg>
-                    <span>Agendar</span></a></li>
+                    <span>Agendar</span></a>
+                    <ul class="sidebar-submenu" style="display: block;">
+                    <li><a href="{{route('espacio.agendar')}}">Agendamiento</a></li>
+                    <!--<li><a href="{{route('agenda.recurrente')}}">Agendamiento Recurrente</a></li>-->
+                  </ul>
+                  </li>
 
 
 

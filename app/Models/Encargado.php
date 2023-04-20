@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 
 class Encargado extends Model
@@ -17,9 +18,9 @@ class Encargado extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function espacio(): HasOne
+    public function categoria(): HasMany
     {
-        return $this->hasOne(Espacio::class, 'encargado_id', 'id');
+        return $this->hasMany(Categoria::class, 'encargado_id', 'id');
     }
 
  

@@ -65,7 +65,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-/* initialize the calendar
+/* initializar calendario
 -----------------------------------------------------------------*/
         var eventos = @json($eventos);
         console.log(eventos)

@@ -9,7 +9,7 @@ use App\Models\Espacio;
 use App\Models\Reserva;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
-use Psy\Command\WhereamiCommand;
+
 
 class EspaciosController extends Controller
 {
@@ -77,6 +77,8 @@ class EspaciosController extends Controller
             $eventos[$key]['title']     = $e->motivo.' pedido por '.$e->responsable.'; Télefono: '.$e->telefono;
             $eventos[$key]['start']     = $e->inicio;
             $eventos[$key]['end']       = $e->fin;
+           
+            $eventos[$key]['color']     = '#ff9f89';
                
         }
 
@@ -191,5 +193,13 @@ class EspaciosController extends Controller
 
         return view('espacios.agendar-espacio-recurrente', ['espacios' => $espacios]);
 
+    }
+
+    public function mostrarlista($id){
+        
+        $recinto = Espacio::findOrFail($id);
+
+
+        return view('espacios.editar-programacion', ['recinto' => $recinto]);
     }
 }

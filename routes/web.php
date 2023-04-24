@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtilsController;
 use App\Http\Controllers\EspaciosController;
+use App\Http\Controllers\ReservasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::post('espacios/ver/agenda', [EspaciosController::class, 'veragenda'])->name('ver.agenda');
     Route::get('espacios/agendarecurrente', [EspaciosController::class, 'agendarecurrente'])->name('agenda.recurrente');
     Route::post('espacios/agendarecurrente/store', [EspaciosController::class, 'storerecurrente'])->name('store.recurrente');
+    Route::get('espacios/mostrarlista/{id}', [EspaciosController::class, 'mostrarlista'])->name('mostrar.lista');
+    Route::get('reservas/editar/{id}',[ReservasController::class, 'edit'])->name('editar.reserva');
+    Route::post('reservas/update/{id}', [ReservasController::class, 'update'])->name('reserva.update');
+    Route::get('reservas/destroy/{id}', [ReservasController::class, 'destroy'])->name('destroy.reserva');
 
     
 

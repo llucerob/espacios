@@ -24,8 +24,19 @@
                     <div class="col-xxl-3 box-col-12">
                         <div class="md-sidebar mb-3">
 
+
+                            <h6>¿Desea editar algún evento de {{$recinto->nombre}}?</h6>
+
+                            <a href="{{ route('mostrar.lista', [$recinto->id]) }}" type="button" class="btn btn-secondary m-2">Editar Programación</a>
+
+                            <hr>
+
+                            <h6>¿Desea revisar otro recinto?</h6>
+
                             <form action="{{route('ver.agenda')}}" method="post">
                                 @csrf
+
+
 
                                 <div class="col">
                                     <div class="mb-3">
@@ -83,15 +94,8 @@
         nowIndicator: true,
         // dayMaxEvents: true, // allow "more" link when too many events
         events: eventos,
-        editable: true,
-        droppable: true, // this allows things to be dropped onto the calendar
-        drop: function(arg) {
-            // is the "remove after drop" checkbox checked?
-            if (document.getElementById('drop-remove').checked) {
-            // if so, remove the element from the "Draggable Events" list
-            arg.draggedEl.parentNode.removeChild(arg.draggedEl);
-            }
-        }
+        editable: false,
+       
         });
         calendar.render();
 

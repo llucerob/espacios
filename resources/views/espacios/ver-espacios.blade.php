@@ -25,6 +25,7 @@
     <div class="row starter-main">
 
       @foreach ($espacios as $e)
+
         
         <div class="col-md-3">
             <div class="card">
@@ -40,6 +41,7 @@
               <br><b>Horario:</b> {{$e->horario_apertura}} - {{$e->horario_cierre}}</p>
               
               <a href="{{ route('ver.reserva', [$e->id]) }}" type="button" class="btn btn-primary m-2">Ver Programación</a>
+              <a href="{{ route('mostrar.lista', [$e->id]) }}" type="button" class="btn btn-primary m-2">Editar Programación</a>
                 
             </div>
         </div>

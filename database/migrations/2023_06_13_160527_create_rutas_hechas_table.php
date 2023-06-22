@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rutas', function (Blueprint $table) {
+        Schema::create('rutas_hechas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehiculo_id')->constrained('vehiculos')->onDelete('cascade');
             $table->foreignId('conductor_id')->constrained('conductores')->onDelete('cascade');
+            $table->integer('kms')->default(0);
+            $table->string('destino')->nullable();
+            $table->string('objetivo')->nullable();
             $table->string('horasalida');
-            $table->string('objetivo');            
+            $table->string('regresoaprox');
+            $table->string('horallegada');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rutas');
+        Schema::dropIfExists('rutas_hechas');
     }
 };

@@ -53,29 +53,74 @@
 
 
 
-                <li class="pin-title sidebar-main-title">
-                      <div> 
-                        <h6>Utilidades</h6>
-                      </div>
-                </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
-                  <svg class="stroke-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-table') }}"></use>
-                  </svg>
-                  <svg class="fill-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-table') }}"></use>
-                  </svg>
-                  <span> Categorías</span></a>
-                </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('encargados') }}">
-                  <svg class="stroke-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
-                  </svg>
-                  <svg class="fill-icon">
-                    <use href="{{ asset('assets/svg/icon-sprite.svg#fill-user') }}"></use>
-                  </svg>
-                  <span> Encargados</span></a>
-                </li>
+                  <li class="pin-title sidebar-main-title">
+                    <div> 
+                      <h6>Vehiculos</h6>
+                    </div>
+                  </li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-table') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#fill-table') }}"></use>
+                    </svg>
+                    <span> Conductores</span></a>
+                    <ul class="sidebar-submenu" style="display: block;">
+                      <li><a href="{{route('conductor.crear')}}">Crear Conductor</a>
+                      </li>
+                      <li><a href="{{route('conductor.listar')}}">Listar Conductores</a>
+                      </li>
+                      
+                      
+                    </ul>
+                  </li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#fill-user') }}"></use>
+                    </svg>
+                    <span> Vehiculos</span></a>
+                    <ul class="sidebar-submenu" style="display: block;">
+                      <li><a href="{{route('vehiculo.crear')}}">Crear Vehiculo</a>
+                      </li>
+                      <li><a href="{{route('vehiculo.listar')}}">Listar Vehiculos</a>
+                      </li>
+                      
+                      
+                      
+                    </ul>
+
+                  </li>
+
+
+
+
+                  <li class="pin-title sidebar-main-title">
+                        <div> 
+                          <h6>Utilidades</h6>
+                        </div>
+                  </li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('categorias') }}">
+                    <svg class="stroke-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-table') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#fill-table') }}"></use>
+                    </svg>
+                    <span> Categorías</span></a>
+                  </li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('encargados') }}">
+                    <svg class="stroke-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('assets/svg/icon-sprite.svg#fill-user') }}"></use>
+                    </svg>
+                    <span> Encargados</span></a>
+                  </li>
 
 
           </ul>

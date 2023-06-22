@@ -19,11 +19,10 @@
 <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
 <script src="{{ asset('assets/js/header-slick.js') }}"></script>
 
+
+
 @yield('script')
 
-@if(Route::current()->getName() != 'popover') 
-	<script src="{{asset('assets/js/tooltip-init.js')}}"></script>
-@endif
 
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
@@ -35,9 +34,3 @@
 	<script src="{{asset('assets/js/layout-change.js')}}"></script>
 @endif --}}
 
-@if(Route::currentRouteName() == 'index')
-<script>
-	new WOW().init();
-</script>
-
-@endif

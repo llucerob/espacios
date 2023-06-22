@@ -132,8 +132,8 @@ class EspaciosController extends Controller
         
         
         if($request->repeticion == 'on'){
-            $mesinicio      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('F');
-            $mesinicio2      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('F');
+            $mesinicio      =   Carbon::createFromFormat('d-m-Y H:i', $request->inicio)->format('F');
+            $mesinicio2      =   Carbon::createFromFormat('d-m-Y H:i', $request->inicio)->format('F');
             //dd($mesinicio);
             $i= 0;
 
@@ -143,14 +143,14 @@ class EspaciosController extends Controller
                 $reserva->telefono          = $request->telefono;
                 $reserva->correo            = $request->correo;
                 $reserva->motivo            = $request->motivo;
-                $reserva->inicio            = Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->addWeek($i)->format('Y-m-d H:i:s');
-                $reserva->fin               = Carbon::createFromFormat('d/m/Y H:i:s', $request->cierre)->addWeek($i)->format('Y-m-d H:i:s');
+                $reserva->inicio            = Carbon::createFromFormat('d-m-Y H:i', $request->inicio)->addWeek($i)->format('Y-m-d H:i:00');
+                $reserva->fin               = Carbon::createFromFormat('d-m-Y H:i', $request->cierre)->addWeek($i)->format('Y-m-d H:i:00');
                 $reserva->espacio_id        = $request->espacio;
                               
                 
 
                 $i = $i + 1;
-                $mesinicio2      =   Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->addWeek($i)->format('F');
+                $mesinicio2      =   Carbon::createFromFormat('d-m-Y H:i', $request->inicio)->addWeek($i)->format('F');
                 $reserva->save();
 
 
@@ -164,8 +164,8 @@ class EspaciosController extends Controller
             $reserva->telefono          = $request->telefono;
             $reserva->correo            = $request->correo;
             $reserva->motivo            = $request->motivo;
-            $reserva->inicio            = Carbon::createFromFormat('d/m/Y H:i:s', $request->inicio)->format('Y-m-d H:i:s');
-            $reserva->fin               = Carbon::createFromFormat('d/m/Y H:i:s', $request->cierre)->format('Y-m-d H:i:s');
+            $reserva->inicio            = Carbon::createFromFormat('d-m-Y H:i', $request->inicio)->format('Y-m-d H:i:00');
+            $reserva->fin               = Carbon::createFromFormat('d-m-Y H:i', $request->cierre)->format('Y-m-d H:i:00');
             $reserva->espacio_id        = $request->espacio;
              
             $reserva->save();

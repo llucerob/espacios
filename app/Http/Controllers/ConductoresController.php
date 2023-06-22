@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Conductor;
+use App\Models\Vehiculo;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class ConductoresController extends Controller
 {
@@ -11,7 +16,11 @@ class ConductoresController extends Controller
      */
     public function index()
     {
-        //
+        $conductores = Conductor::all();
+        $vehiculos = Vehiculo::where('estado', 'Libre')->get();
+
+
+        return view('conductores.listar', ['conductores' => $conductores, 'vehiculos' => $vehiculos]);
     }
 
     /**
@@ -19,7 +28,7 @@ class ConductoresController extends Controller
      */
     public function create()
     {
-        //
+        return view('conductores.crear');
     }
 
     /**
@@ -27,7 +36,18 @@ class ConductoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $conductor = new Conductor;
+
+        $conductor->nombre      = $request->nombre;
+        $conductor->apellido    = $request->apellido;
+        $conductor->rut         = $request->rut;
+        $conductor->poliza      = $request->poliza;
+
+        $conductor->save();
+
+
+        return redirect()->route('conductor.listar');
+
     }
 
     /**
@@ -35,7 +55,10 @@ class ConductoresController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $conductor  = Conductor::findOrFail($id);
+
+
+        return view('conductores.show', ['conductor' => $conductor]);
     }
 
     /**
@@ -43,7 +66,9 @@ class ConductoresController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $conductor = Conductor::findOrFail($id);
+
+        return view('conductores.edit', ['conductor' => $conductor]);
     }
 
     /**
@@ -51,7 +76,16 @@ class ConductoresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $conductor = Conductor::fondOrFail($id);
+
+        $conductor->nombre      = $request->nombre;
+        $conductor->apellido    = $request->apellido;
+        $conductor->rut         = $request->rut;
+        $conductor->poliza      = $request->poliza;
+
+        $conductor->update();
+
+        return redirect()->route('listar.conductor');
     }
 
     /**
@@ -59,6 +93,28 @@ class ConductoresController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $conductor      = Conductor::findOrFail($id);
+        $conductor->delete();
+
+        return redirect()->route('listar.conductor');
+    }
+
+    public function crearuta(string $id, Request $request)
+    {
+        $conductor = Conductor::findOrFail($id);
+
+        $auto = Vehiculo::findOrFail($request->auto);
+
+        
+
+        $conductor->ruta()->attach($request->auto, ['horasalida' => Carbon::now()->format('d-m-Y H:i'), 'objetivo' => $request->objetivo, 'destino' => $request->destino, 'regresoaprox' => $request->regreso]);
+
+        $auto->estado = 'En Ruta';
+        $auto->update();
+
+
+        return redirect()->route('vehiculo.listar');
+        
+
     }
 }

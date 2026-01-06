@@ -68,7 +68,7 @@ class ConductoresController extends Controller
     {
         $conductor = Conductor::findOrFail($id);
 
-        return view('conductores.edit', ['conductor' => $conductor]);
+        return view('conductores.editar', ['conductor' => $conductor]);
     }
 
     /**
@@ -76,7 +76,7 @@ class ConductoresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $conductor = Conductor::fondOrFail($id);
+        $conductor = Conductor::findOrFail($id);
 
         $conductor->nombre      = $request->nombre;
         $conductor->apellido    = $request->apellido;
@@ -85,7 +85,7 @@ class ConductoresController extends Controller
 
         $conductor->update();
 
-        return redirect()->route('listar.conductor');
+        return redirect()->route('conductor.listar');
     }
 
     /**
@@ -96,7 +96,7 @@ class ConductoresController extends Controller
         $conductor      = Conductor::findOrFail($id);
         $conductor->delete();
 
-        return redirect()->route('listar.conductor');
+        return redirect()->route('conductor.listar');
     }
 
     public function crearuta(string $id, Request $request)

@@ -73,6 +73,9 @@
 @section('script')
     <script src="{{ asset('assets/js/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('assets/js/calendar/es.js') }}"></script>
+    <script src="{{ asset('asset/js/calendar/index.global.js')}}"></script>
+
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -94,7 +97,17 @@
         nowIndicator: true,
         // dayMaxEvents: true, // allow "more" link when too many events
         events: eventos,
-        editable: false,
+        editable: true,
+
+
+        eventResize: function(info) {
+    alert(info.event.title + " end is now " + info.event.end.toISOString());
+
+    if (!confirm("is this okay?")) {
+      info.revert();
+    }
+  }
+       
        
         });
         calendar.render();

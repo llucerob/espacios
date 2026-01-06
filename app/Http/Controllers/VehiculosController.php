@@ -236,7 +236,7 @@ class VehiculosController extends Controller
         $auto->ano          = $request->ano;
         $auto->save();
 
-        return redirect()->route('listar.vehiculo');
+        return redirect()->route('vehiculo.listar');
     }
 
     /**

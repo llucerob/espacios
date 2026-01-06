@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Editar Vehiculos')
+@section('title', 'Crear Conductor')
 
 @section('css')
     
@@ -10,11 +10,11 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Editar Vehiculos</h3>
+    <h3>Editar Conductores</h3>
 @endsection
 
 @section('breadcrumb-items')
-    <li class="breadcrumb-item">Vehiculos</li>
+    <li class="breadcrumb-item">Conductores</li>
     <li class="breadcrumb-item active">Editar</li>
    
 @endsection
@@ -28,27 +28,27 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Editar Vehiculo {{$auto->patente}}</h5>
+                    <h5>Editar Conductor</h5>
                     
                 </div>
                 
-                <form class="needs-validation theme-form" novalidate="" action="{{ route('vehiculo.update', [$auto->id]) }}" method="post" enctype="multipart/form-data">
+                <form class="needs-validation theme-form" novalidate="" action="{{ route('conductor.update', [$conductor->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                       <div class="row g-3">
 
                         <div class="col-md-6">
                           <div class="mb-3">
-                            <label class="form-label" for="inputPatente">Patente</label>
-                            <input class="form-control" id="inputPatente" type="text" required value="{{$auto->patente}}" name="patente" placeholder="patente">
+                            <label class="form-label" for="inputNombre">Nombre</label>
+                            <input class="form-control" id="inputNombre" type="text" required name="nombre" placeholder="nombre" value={{ $conductor->nombre }} >
                             <div class="valid-feedback">¡Luce bien!</div>
                           </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                              <label class="form-label" for="inputAno">Año</label>
-                              <input class="form-control" id="inputAno" type="number" value="{{$auto->ano}}" required name="ano" placeholder="Año">
+                              <label class="form-label" for="inputApellido">Apellido</label>
+                              <input class="form-control" id="inputApellido" type="text" required name="apellido" placeholder="apellido" value={{ $conductor->apellido }} >
                               <div class="valid-feedback">¡Luce bien!</div>
                             </div>
                         </div>
@@ -57,16 +57,19 @@
 
                         <div class="col-md-6">
                           <div class="mb-3">
-                            <label class="form-label" for="inputModelo">Modelo</label>
-                            <input class="form-control" id="inputModelo" type="text"  name="modelo" required value="{{$auto->modelo}}" placeholder="Modelo">
+                            <label class="form-label" for="inputRut">Rut</label>
+                            <input class="form-control" id="inputRut" type="text" required name="rut" placeholder="Rut" value={{ $conductor->rut }} >
                             <div class="valid-feedback">¡Luce bien!</div>
                           </div>
                       </div>
 
-
-                        
-
-                        
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="inputPoliza">Póliza</label>
+                          <input class="form-control" id="inputPoliza" type="text"  name="poliza" placeholder="ingrese Poliza" value={{ $conductor->poliza }} >
+                          <div class="valid-feedback">¡Luce bien!</div>
+                        </div>
+                    </div>
 
                       </div>
 

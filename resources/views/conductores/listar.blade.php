@@ -51,13 +51,14 @@
                                         <td width="10%">{{$c->rut}}</td>
                                         <td width="30%">{{$c->nombre}} {{$c->apellido}}</td>
                                         <td width="10%">{{$c->poliza}}</td>
-                                        <td><button class="btn btn-primary btn-sm m-1" title="Crear ruta" data-bs-toggle="modal" data-bs-target="#modalRuta{{$key}}"><i class="fa fa-road"></i></button></td>
+                                        <td><button class="btn btn-primary btn-sm m-1" title="Crear ruta" data-bs-toggle="modal" data-bs-target="#modalRuta{{$key}}"><i class="fa fa-road"></i></button>
+                                            <a href="{{route('conductor.edit', [$c->id])}}" title="Editar" class="btn btn-primary btn-sm m-1"><i class="fa fa-edit"></i></a></td>
                                     </tr>
 
                                     <div class="modal fade" id="modalRuta{{$key}}" tabindex="-1" role="dialog" aria-labelledby="modalRuta{{$key}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form action="{{route('crear.ruta', [$c->id])}}" method="post">
+                                                <form action="{{route('crear.ruta', $c->id)}}" method="post">
                                                     @csrf
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Generar Ruta</h5>

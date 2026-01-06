@@ -56,6 +56,7 @@
                                             <span>Hora Aprox Retorno: {{$a['msje']}}hrs.</span>@else  @endif </td>
                                         <td>@if($a['estado'] == 'En Ruta')<a href="{{route('vehiculo.imprimir', [$a['id']])}}" class="btn btn-primary btn-sm m-1" title="Imprimir" ><i class="fa fa-file-text"></i></a> <a class="btn btn-secondary btn-sm m-1" data-bs-toggle="modal" data-bs-target="#modalEntrega{{$key}}" title="Terminar Ruta"><i class="fa fa-car"></i></a>@endif
                                             <button data-bs-toggle="modal" data-bs-target="#modalMensaje{{$key}}" class="btn btn-warning btn-sm m-1" title="Insertar Mensaje"><i class="fa fa-exclamation-triangle"></i></button><button data-bs-toggle="modal" data-bs-target="#modalRevision{{$key}}" title="Ingresar Revision Técnica" class="btn btn-danger btn-sm m-1"><i class="fa fa-check-square"></i></button><button data-bs-toggle="modal" data-bs-target="#modalAceite{{$key}}" title="Ingresar Cambio Aceite" class="btn btn-success btn-sm m-1"><i class="fa fa-tint"></i></button><a href="{{route('vehiculo.show', [$a['id']])}}" title="Hoja de vida" class="btn btn-success btn-sm m-1"><i class="fa fa-eye"></i></a>
+                                            <a href="{{route('vehiculo.edit', [$a['id']])}}" title="Editar" class="btn btn-primary btn-sm m-1"><i class="fa fa-edit"></i></a>
                                         </td>
 
 

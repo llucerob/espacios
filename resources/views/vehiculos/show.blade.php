@@ -93,7 +93,7 @@
               
                     
           
-      </div>
+        </div>
 
         <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 notification box-col-6">
 

@@ -31,7 +31,7 @@ class UtilsController extends Controller
         $newcategoria->save();
 
 
-        return redirect()->route('categorias');
+        return redirect()->route('categorias')->with('success', 'prueba');
 
     }
 

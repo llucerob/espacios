@@ -74,6 +74,8 @@ class EspaciosController extends Controller
         $eventos = [];
         foreach ($espacio->reservas as $key => $e){
 
+$eventos[$key]['id']        = $e->id;
+
             $eventos[$key]['title']     = $e->motivo.' pedido por '.$e->responsable.'; Télefono: '.$e->telefono;
             $eventos[$key]['start']     = $e->inicio;
             $eventos[$key]['end']       = $e->fin;

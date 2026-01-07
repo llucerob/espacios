@@ -3,6 +3,8 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/calendar.css') }}">
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('style')
@@ -73,46 +75,83 @@
 @section('script')
     <script src="{{ asset('assets/js/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('assets/js/calendar/es.js') }}"></script>
-    <script src="{{ asset('asset/js/calendar/index.global.js')}}"></script>
-
     
+    <script src="{{ asset('assets/js/calendar/index.global.js')}}"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
 
-/* initializar calendario
------------------------------------------------------------------*/
-        var eventos = @json($eventos);
-        console.log(eventos)
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        },
-        initialView: 'dayGridMonth',
-        navLinks: true, // can click day/week names to navigate views
-        selectable: true,
-        locale: 'es',
-        nowIndicator: true,
-        // dayMaxEvents: true, // allow "more" link when too many events
-        events: eventos,
-        editable: true,
+            // Recibimos los eventos desde Laravel
+            var eventos = @json($eventos);
 
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                },
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                navLinks: true,
+                selectable: true,
+                nowIndicator: true,
+                events: eventos,
+                
+                // IMPORTANTE: Esto habilita mover la barra
+                editable: true, 
 
-        eventResize: function(info) {
-    alert(info.event.title + " end is now " + info.event.end.toISOString());
+                // 1. Detectar cuando estiras/encoges el evento
+                eventResize: function(info) {
+                    actualizarReserva(info);
+                },
 
-    if (!confirm("is this okay?")) {
-      info.revert();
-    }
-  }
-       
-       
-        });
-        calendar.render();
+                // 2. Detectar cuando arrastras y sueltas el evento (NUEVO)
+                eventDrop: function(info) {
+                    actualizarReserva(info);
+                }
+            });
 
+            calendar.render();
+
+            // --- FUNCIÓN PARA GUARDAR EN LA BASE DE DATOS ---
+            function actualizarReserva(info) {
+                var id = info.event.id;
+                var start = info.event.startStr;
+                var end = info.event.endStr;
+
+                // Generamos la ruta correcta compatible con Laragon
+                var url = "{{ url('reservas/drop') }}/" + id;
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        start: start,
+                        end: end
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la petición');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Guardado correctamente');
+                    } else {
+                        alert('No se pudo guardar: ' + data.message);
+                        info.revert(); 
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al guardar fecha.');
+                    info.revert();
+                });
+            }
         });
     </script>
-    
 @endsection

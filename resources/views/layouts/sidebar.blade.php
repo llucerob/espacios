@@ -19,7 +19,6 @@
                 <svg class="fill-icon">
                   <use href="{{ asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
                 </svg><span>Todas las reservas</span></a></li>
-
                 <li class="pin-title sidebar-main-title">
                   <div> 
                     <h6>Espacios</h6>
@@ -51,6 +50,7 @@
                   </ul>
                   </li>
 
+                  
 
 
                   <li class="pin-title sidebar-main-title">
@@ -89,14 +89,10 @@
                       <li><a href="{{route('vehiculo.listar')}}">Listar Vehiculos</a>
                       </li>
                       
-                      
-                      
                     </ul>
 
                   </li>
-
-
-
+                  
 
                   <li class="pin-title sidebar-main-title">
                         <div> 
@@ -122,10 +118,18 @@
                     <span> Encargados</span></a>
                   </li>
 
+                  
+
 
           </ul>
         </div>
+
+        
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+        
       </nav>
     </div>
   </div>
+
+
+  

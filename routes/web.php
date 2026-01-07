@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
 
     //Espacios
 
+     
     Route::get('espacios/crear', [EspaciosController::class, 'create'])->name('crear.espacio');
     Route::post('espacios/store', [EspaciosController::class, 'store'])->name('espacio.store');
     Route::get('espacios/mostrar', [EspaciosController::class, 'index'])->name('espacios.mostrar');
@@ -63,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('reservas/editar/{id}',[ReservasController::class, 'edit'])->name('editar.reserva');
     Route::post('reservas/update/{id}', [ReservasController::class, 'update'])->name('reserva.update');
     Route::get('reservas/destroy/{id}', [ReservasController::class, 'destroy'])->name('destroy.reserva');
+Route::post('reservas/drop/{id}', [App\Http\Controllers\ReservasController::class, 'dropUpdate'])->name('reserva.drop');
 
 
     //conductores
@@ -90,7 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::post('vehiculo/ingresomensaje/{id}', [VehiculosController::class, 'ingresomensaje'])->name('vehiculo.ingmensaje');
     Route::post('vehiculo/ingresorevision/{id}', [VehiculosController::class, 'ingresorevision'])->name('vehiculo.ingrevision');   
     Route::post('vehiculo/ingresoaceite/{id}', [VehiculosController::class, 'ingresoaceite'])->name('vehiculo.ingaceite');  
-
+    Route::post('reservas/drop/{id}', [App\Http\Controllers\ReservasController::class, 'dropUpdate'])->name('reserva.drop');
 
 });
 

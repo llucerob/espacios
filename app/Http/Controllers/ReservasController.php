@@ -92,4 +92,16 @@ class ReservasController extends Controller
 
         return redirect()->route('mostrar.lista', [$recinto]);
     }
+
+   public function dropUpdate(Request $request, $id)
+    {
+        $reserva = Reserva::find($id);
+        if ($reserva) {
+            $reserva->inicio = Carbon::parse($request->start)->format('Y-m-d H:i:s');
+            $reserva->fin    = Carbon::parse($request->end)->format('Y-m-d H:i:s');
+            $reserva->save();
+            return response()->json(['status' => 'success', 'message' => 'Guardado exitoso']);
+        }
+        return response()->json(['status' => 'error', 'message' => 'Reserva no encontrada'], 404);
+    }
 }

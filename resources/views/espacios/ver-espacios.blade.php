@@ -11,7 +11,7 @@
 @endsection
 
 @section('breadcrumb-title')
-    <h3>Todos los Recintos</h3>
+    <h3>Todos los recintos</h3>
 @endsection
 
 @section('breadcrumb-items')
